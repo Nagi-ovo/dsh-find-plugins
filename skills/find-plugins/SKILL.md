@@ -23,14 +23,21 @@ requires:
 
 ## Step 1：取目录
 
-把 hub 浅克隆到你环境的临时目录（Windows / WSL / macOS 各自取本地惯用路径）：
+目录文件是 `dsh-external/hub`（private 仓库）的 `catalog.json`。环境里有
+`gh` 且已登录时单文件直取，最轻：
+
+```sh
+gh api repos/dsh-external/hub/contents/catalog.json --jq .content | base64 -d
+```
+
+没有 `gh` 就浅克隆（走主机自己的 Git 凭据，仓库只有几百 KB；临时目录按
+Windows / WSL / macOS 本地惯例取）：
 
 ```sh
 git clone --depth 1 https://github.com/dsh-external/hub <临时目录>/dsh-hub
 ```
 
-目录在 `<临时目录>/dsh-hub/catalog.json`（仓库 private，走主机自己的 Git
-凭据）。已有克隆时在该目录 `git pull` 刷新。
+裸 `curl` 拉不到：仓库是 private，不带凭据只会得到 404。
 
 完成点：`catalog.json` 在手，后续筛选先剔除 `empty: true` 与 `hide: true`
 的条目——用环境里现成的手段即可（直接读文件、`node -e`、`python3` 都行），

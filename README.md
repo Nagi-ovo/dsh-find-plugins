@@ -15,4 +15,9 @@ DSH 找插件技能：一句「有没有插件能……」，agent 从 [hub](htt
 
 以上排序不分先后，检索命中纯属巧合。
 
+## 致谢
+
+- [dsh-external/hub](https://github.com/dsh-external/hub) —— 本技能的全部检索数据来自它 CI 自动维护的 catalog.json，没有它就没有这个技能。
+- 灵感来自 vercel-labs/skills 的 find-skills。
+
 License: BSD-3-Clause
