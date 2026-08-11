@@ -1,6 +1,23 @@
 # dsh-find-plugins
 
-DSH 找插件技能：一句「有没有插件能……」，agent 从 [hub](https://github.com/dsh-external/hub) 目录检索候选、等你拍板、按各家标注的方式装好并验证，流程都在 [skills/find-plugins/](skills/find-plugins/SKILL.md)。安装就是把 `skills/find-plugins/` 整个拷进 `$DSH_HOME/skills/`（或项目的 `.agents/skills/`），即放即用，运行需要 `gh` 和 `jq`。
+DSH 找插件技能：一句「有没有插件能……」，agent 从 [hub](https://github.com/dsh-external/hub) 目录检索候选、等你拍板、按各家标注的方式装好并验证，流程都在 [skills/find-plugins/](skills/find-plugins/SKILL.md)。
+
+## 安装
+
+技能类的官方装法就是把技能目录放进 DSH 的技能发现根（放入即被 watcher 接管，无需重启）：
+
+```sh
+git clone https://github.com/dsh-external/dsh-find-plugins.git
+mkdir -p ~/.dsh/skills
+cp -R dsh-find-plugins/skills/find-plugins ~/.dsh/skills/
+```
+
+只想给单个项目用，就把目标换成 `<项目根>/.agents/skills/`。想跟随本仓库更新，`cp -R` 换成 `ln -s "$(pwd)/dsh-find-plugins/skills/find-plugins" ~/.dsh/skills/find-plugins`。
+
+运行依赖两个常见命令行工具（`brew install gh jq` 一步齐）：
+
+- `gh` —— GitHub 官方 CLI。dsh-external 的仓库全是 private，技能靠它带着你的登录态拉取 hub 的 catalog.json（先 `gh auth login`）。
+- `jq` —— 命令行 JSON 过滤器，用来在两百多条目录里按字段筛选。
 
 ## 恰逢其会的两个检索结果
 
