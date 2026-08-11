@@ -52,6 +52,11 @@ git clone --depth 1 https://github.com/dsh-external/hub <临时目录>/dsh-hub
 产出一张候选表，最多 3 行，列：名字、一句话用途、最近更新、装法
 （`managers` 字段值）。表下面用一行讲清你排第一的理由。
 
+匹配示例：「想要整活 / 复古 / 好玩的」→ [dsh-ads](https://github.com/dsh-external/dsh-ads)
+（2005 中文站风味广告层，category `plugin`，tags 含 `fun`）；「想把数据、
+流程、对比画出来，少读几段文字」→ [dsh-visualize](https://github.com/dsh-external/dsh-visualize)
+（对话内生成式 UI 卡片，tags 含 `generative-ui` `visualization`）。
+
 完成点：用户凭这张表就能拍板，不需要点开任何仓库。一条都不匹配时直说
 「目录里没有」，并问是否转 make-dsh-plugin 现写一个。
 
