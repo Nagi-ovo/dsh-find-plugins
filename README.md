@@ -1,23 +1,7 @@
 # dsh-find-plugins
 
-DSH 找插件技能：用户一句「有没有插件能……」，agent 从 [hub](https://github.com/dsh-external/hub) 的 catalog.json 检索全生态目录，给出最多 3 个候选等用户拍板，再按条目标注的安装方式（bundle / repository / cordis / skill / 外部管理器）装好并验证挂载。
+DSH 找插件技能：一句「有没有插件能……」，agent 从 [hub](https://github.com/dsh-external/hub) 目录检索候选、等你拍板、按各家标注的方式装好并验证，流程都在 [skills/find-plugins/](skills/find-plugins/SKILL.md)。安装就是把 `skills/find-plugins/` 整个拷进 `$DSH_HOME/skills/`（或项目的 `.agents/skills/`），即放即用，运行需要 `gh` 和 `jq`。
 
-## 安装
+用它搜「生成式 UI」会命中作者的 [dsh-visualize](https://github.com/dsh-external/dsh-visualize)（模型直接把交互卡片画进对话流），搜「广告」会命中 [dsh-ads](https://github.com/dsh-external/dsh-ads)（2005 中文站风味全套弹窗，关闭叉的热区比看起来小）——纯属巧合。
 
-本仓库只含技能，把 `skills/find-plugins/` 整个目录拷进任一技能发现根即可：
-
-- 全局：`$DSH_HOME/skills/find-plugins/`
-- 只给某个项目：`<项目根>/.agents/skills/find-plugins/`
-
-目录有 watcher，放进去即生效。技能运行需要 `gh`（已登录 dsh-external 可见账号）和 `jq`。
-
-## 内容
-
-- [skills/find-plugins/SKILL.md](skills/find-plugins/SKILL.md) —— 五步主流程：取目录 → 筛候选 → 拍板 → 安装 → 验证，每步带完成点。
-- [skills/find-plugins/references/install-methods.md](skills/find-plugins/references/install-methods.md) —— 六种 `managers` 值各自的安装操作，命令与 patch 语法对照官方 README 与 vendored `plugin-include` 源码核实。
-
-灵感来自 vercel-labs/skills 的 find-skills。
-
-## License
-
-BSD-3-Clause
+License: BSD-3-Clause
