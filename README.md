@@ -4,19 +4,9 @@ DSH 找插件技能：一句「有没有插件能……」，agent 从 [hub](htt
 
 ## 安装
 
-最省事：把本仓库链接发给你的 DSH，说一句「帮我装这个技能」，它照下面三行就装好了。
+把本仓库链接发给你的 DSH，说一句「帮我装这个技能」。
 
-手动装也就是把技能目录放进 DSH 的技能发现根（放入即被 watcher 接管，无需重启）：
-
-```sh
-git clone https://github.com/dsh-external/dsh-find-plugins.git
-mkdir -p ~/.dsh/skills
-cp -R dsh-find-plugins/skills/find-plugins ~/.dsh/skills/
-```
-
-只想给单个项目用，就把目标换成 `<项目根>/.agents/skills/`。想跟随本仓库更新，`cp -R` 换成 `ln -s "$(pwd)/dsh-find-plugins/skills/find-plugins" ~/.dsh/skills/find-plugins`。
-
-没有额外依赖：检索用 `git clone` 直接拉 hub 的目录文件——你装得上这个生态的插件，git 凭据就已经就位。
+（给动手的 agent：clone 本仓库后，把 `skills/find-plugins/` 整个目录复制进 `$DSH_HOME/skills/`——目录有 watcher，放入即生效；只想给单个项目用就放 `<项目根>/.agents/skills/`。检索阶段用 git 拉取 hub 目录，除 git 外无额外依赖。）
 
 ## 恰逢其会的两个检索结果
 
