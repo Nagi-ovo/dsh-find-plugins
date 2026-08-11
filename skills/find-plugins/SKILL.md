@@ -12,8 +12,7 @@ metadata:
   version: "1.0.0"
 requires:
   bins:
-    - gh
-    - jq
+    - git
 ---
 
 # 找插件、装插件
@@ -25,16 +24,15 @@ requires:
 ## Step 1：取目录
 
 ```sh
-gh api repos/dsh-external/hub/contents/catalog.json --jq .content | base64 -d > "$TMPDIR/dsh-catalog.json"
+git clone --depth 1 https://github.com/dsh-external/hub "$TMPDIR/dsh-hub"
 ```
 
-先剔除不可装条目：
+目录在 `$TMPDIR/dsh-hub/catalog.json`（仓库 private，走主机自己的 Git 凭据）。
+已有克隆时改用 `git -C "$TMPDIR/dsh-hub" pull` 刷新。
 
-```sh
-jq '[.repos[] | select(.empty | not) | select(.hide | not)]' "$TMPDIR/dsh-catalog.json"
-```
-
-完成点：过滤后的条目数组在手。
+完成点：`catalog.json` 在手，后续筛选先剔除 `empty: true` 与 `hide: true`
+的条目——用环境里现成的手段即可（直接读文件、`node -e`、`python3` 都行），
+不依赖额外工具。
 
 ## Step 2：筛出候选
 
