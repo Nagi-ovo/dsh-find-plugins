@@ -1,25 +1,25 @@
 # dsh-find-plugins
 
 <p align="center">
-  <strong>简体中文</strong> | <a href="README.en.md">English</a>
+  <strong>English</strong> | <a href="README.zh-CN.md">简体中文</a>
 </p>
 
-对 DSH 说一句「有没有插件能……」，它就会从全 GitHub 的 [`dsh-plugin` topic](https://github.com/topics/dsh-plugin) 里找出候选，解释差别，等你选好以后再安装和验证。
+Ask DSH, “is there a plugin for this?” It searches the GitHub [`dsh-plugin` topic](https://github.com/topics/dsh-plugin), explains the best matches, waits for your choice, then installs and verifies the selected plugin.
 
-仓库属于个人还是组织并不重要。只要是公开仓库并带有 `dsh-plugin` topic，转移仓库后仍然能被发现。
+Repository ownership does not matter. Any public repository tagged `dsh-plugin` remains discoverable after a transfer between a personal account and an organization.
 
-## 安装
+## Install
 
-把本仓库链接发给 DSH，说一句「帮我装这个技能」。
+Send the repository link to DSH and say, “Install this skill for me.”
 
-手动安装时，把 `skills/find-plugins/` 整个目录复制到 `$DSH_HOME/skills/`；只想给当前项目使用，则复制到 `<项目根>/.agents/skills/`。目录 watcher 会让它立即生效。
+For a manual installation, copy the entire `skills/find-plugins/` directory to `$DSH_HOME/skills/`. To use it in one project only, copy it to `<project-root>/.agents/skills/`. The directory watcher loads it immediately.
 
-## 它会怎么做
+## What it does
 
-Skill 会先运行自带脚本，获取所有公开、未归档、非 fork 的 `dsh-plugin` 仓库。它只检查最匹配的少量候选，并从 README、`package.json` 和仓库文件判断应该按 bundle、Cordis 插件还是 skill 安装。涉及 lifecycle scripts 或可疑的额外写入时，它会停下来让你确认。
+The skill runs its bundled search script to collect public, active, non-fork repositories tagged `dsh-plugin`. It inspects only the most relevant candidates, then reads their README, `package.json`, and repository files to decide whether each one installs as a bundle, Cordis plugin, or skill. It stops for confirmation when an installation uses lifecycle scripts or writes outside the expected DSH paths.
 
-比如「想把数据和流程画出来」可以找到 [dsh-visualize](https://github.com/Nagi-ovo/dsh-visualize)；「想给 Web UI 加点 2005 年互联网味道」可能会找到 [dsh-ads](https://github.com/Nagi-ovo/dsh-ads)。检索命中纯属巧合。
+“Show data and processes visually” can lead to [dsh-visualize](https://github.com/Nagi-ovo/dsh-visualize). “Give the Web UI some 2005 internet energy” might find [dsh-ads](https://github.com/Nagi-ovo/dsh-ads). Any favorable ranking is entirely coincidental.
 
-[dsh-external/hub](https://github.com/dsh-external/hub) 在当前账号可访问时可以补充分类和安装信息，但 GitHub topic 才是主目录。灵感来自 vercel-labs/skills 的 find-skills。
+When the current account can access [dsh-external/hub](https://github.com/dsh-external/hub), its catalog can add category and installation details. The GitHub topic remains the primary directory. Inspired by the find-skills workflow from vercel-labs/skills.
 
 License: BSD-3-Clause
