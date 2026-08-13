@@ -1,6 +1,6 @@
 # 安装方式对照
 
-按 catalog 条目 `managers` 数组的值查小节。多值并存时的优先级：
+按仓库当前声明确认的安装类型查小节。多值并存时的优先级：
 `bundle` > `cordis` > 外部管理器（`marisa` / `mygo`）。`repository` 已从
 最新 DSH 移除；同一条目还有 `bundle` 时走 bundle，只有 `repository` 时停止并
 说明该插件需要迁移。
@@ -19,10 +19,10 @@ cd <dsh-source>
 pnpm dsh plugin --profile <profile> add <package-or-git-spec>
 ```
 
-私有组织仓库通常使用锁定 commit 的 Git spec：
+GitHub 仓库建议使用 topic 搜索返回的当前 owner，并锁定 commit：
 
 ```sh
-pnpm dsh plugin --profile <profile> add 'github:dsh-external/<repo>#<commit>'
+pnpm dsh plugin --profile <profile> add 'github:<owner>/<repo>#<commit>'
 ```
 
 README 指定 `&path:/<子目录>` 时保留该参数。安装命令会交给 profile 的 pnpm，
@@ -31,7 +31,7 @@ README 指定 `&path:/<子目录>` 时保留该参数。安装命令会交给 pr
 CLI 不可用时手工等价操作：
 
 1. `$DSH_HOME/profiles/<profile>/package.json` 的 `dependencies` 加包
-   （GitHub 源写 `github:dsh-external/<repo>`，本地开发写 `link:<路径>`）。
+   （GitHub 源写 `github:<owner>/<repo>`，本地开发写 `link:<路径>`）。
 2. 同文件 `dsh.profile.bundles` 数组末尾追加包名（列表顺序即 patch 层
    应用顺序，官方 bundle 在前）。
 3. 在该 profile 目录执行 `pnpm install`。
@@ -50,7 +50,7 @@ cache 和对应配置行，不提供兼容解析。只有 `repository` 标记的
 
 ```yaml
 - insert:
-    - name: '@dsh-external/<package>'
+    - name: '<package-name>'
       config: {}
 ```
 
