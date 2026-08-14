@@ -10,7 +10,11 @@ Repository ownership does not matter. Any public repository tagged `dsh-plugin` 
 
 ## Install
 
-Send the repository link to DSH and say, “Install this skill for me.”
+Send this message to DSH:
+
+```text
+Install the dsh-find-plugins skill from https://github.com/Nagi-ovo/dsh-find-plugins
+```
 
 For a manual installation, copy the entire `skills/find-plugins/` directory to `$DSH_HOME/skills/` (by default, `~/.dsh/skills/`). To use it in one project only, copy it to `<project-root>/.dsh/skills/`. DSH also recognizes `<project-root>/.agents/skills/` when you want to share the skill with other agents. The directory watcher loads it immediately.
 
