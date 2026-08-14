@@ -12,7 +12,7 @@
 
 把本仓库链接发给 DSH，说一句「帮我装这个技能」。
 
-手动安装时，把 `skills/find-plugins/` 整个目录复制到 `$DSH_HOME/skills/`；只想给当前项目使用，则复制到 `<项目根>/.agents/skills/`。目录 watcher 会让它立即生效。
+手动安装时，把 `skills/find-plugins/` 整个目录复制到 `$DSH_HOME/skills/`（默认是 `~/.dsh/skills/`）；只想给当前项目使用，则复制到 `<项目根>/.dsh/skills/`。如果还想与其他 Agent 共用，也可以放在 `<项目根>/.agents/skills/`。目录 watcher 会让它立即生效。
 
 ## 它会怎么做
 
