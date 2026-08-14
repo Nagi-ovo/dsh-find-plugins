@@ -28,4 +28,4 @@ Skill 会先运行自带脚本，获取所有公开、未归档、非 fork 的 `
 
 [dsh-external/hub](https://github.com/dsh-external/hub) 在当前账号可访问时可以补充分类和安装信息，但 GitHub topic 才是主目录。灵感来自 vercel-labs/skills 的 find-skills。
 
-License: BSD-3-Clause
+License: [BSD-3-Clause](LICENSE)

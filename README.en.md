@@ -28,4 +28,4 @@ The skill runs its bundled search script to collect public, active, non-fork rep
 
 When the current account can access [dsh-external/hub](https://github.com/dsh-external/hub), its catalog can add category and installation details. The GitHub topic remains the primary directory. Inspired by the find-skills workflow from vercel-labs/skills.
 
-License: BSD-3-Clause
+License: [BSD-3-Clause](LICENSE)
