@@ -22,7 +22,9 @@ For a manual installation, copy the entire `skills/find-plugins/` directory to `
 
 ## What it does
 
-The skill runs its bundled search script to collect public, active, non-fork repositories tagged `dsh-plugin`. It inspects only the most relevant candidates, then reads their README, `package.json`, and repository files to decide whether each one installs as a bundle, Cordis plugin, or skill. It stops for confirmation when an installation uses lifecycle scripts or writes outside the expected DSH paths.
+The skill runs its bundled search script to collect public, active, non-fork repositories tagged `dsh-plugin`. It inspects only the most relevant candidates, then reads their README, `package.json`, and repository files to decide whether each one installs as a bundle, Cordis plugin, or skill.
+
+After you pick one and before anything is installed, it reviews the plugin's lifecycle scripts, outbound network and subprocess calls, the session data and credentials it reads, and the repository's own credibility — then **reports what it found whether or not anything looks wrong** and asks again before continuing. A plugin runs inside your DSH process, so installing it grants it that access.
 
 “Show data and processes visually” can lead to [dsh-visualize](https://github.com/Nagi-ovo/dsh-visualize). “Give the Web UI some 2005 internet energy” might find [dsh-ads](https://github.com/Nagi-ovo/dsh-ads). Any favorable ranking is entirely coincidental.
 

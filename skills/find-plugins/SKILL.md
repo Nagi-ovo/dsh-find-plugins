@@ -3,8 +3,8 @@ name: find-plugins
 description: >
   用户想给 DeepSeek Harness 找插件时使用：「有没有插件能……」「帮我装个 XX」
   「生态里有什么好玩的」。从全 GitHub 的 dsh-plugin topic 发现跨个人与组织的
-  公开仓库，筛选候选，等用户拍板，再从仓库声明判断安装方式并验证挂载。只负责
-  找和装；开发新插件转 make-dsh-plugin。
+  公开仓库，筛选候选，等用户拍板，先汇报这个插件要什么权限，再从仓库声明判断
+  安装方式并验证挂载。只负责找和装；开发新插件转 make-dsh-plugin。
 ---
 
 # 找插件、装插件
@@ -56,18 +56,40 @@ topics 和更新时间。按 `fullName` 去重，不根据旧 owner 猜地址。
 停下来等选择。用户已经点名某个插件时，从 Step 2 核对当前仓库和装法后直接进入
 Step 4。
 
-## Step 4：安装
+## Step 4：安全检查并汇报
+
+用户点头之后、动手之前，先看一遍这个插件装进来会拿到什么。插件运行在用户的
+DSH 进程里，能读会话、调工具、跑命令，装它等于授权，所以这一步不能跳过，也不
+能只在发现问题时才出声。
+
+至少看这四处：
+
+- `package.json` 的 lifecycle scripts：`preinstall`、`install`、`postinstall`、
+  `prepare` 在 Git / npm 安装时会执行。
+- 插件声明和源码里对外的动作：网络请求、子进程、写 `$DSH_HOME` 之外的路径、
+  改 shell 配置或系统设置。
+- 插件读取的会话数据和凭据：读会话日志、settings、`.env` 或 credentials 的地方。
+- 仓库本身的可信度：`pushedAt`、star 数、作者是否还有其他 dsh 插件、README 与
+  代码是否对得上。
+
+**不管有没有发现问题，都要汇报**，三到五行讲清：查了哪几处、这个插件实际要什么
+权限、有没有和它宣称的用途对不上的动作。有可疑项就把原文贴出来，别转述。
+
+汇报完再问一次是否继续。用户说停就停在这里，不要顺手装完。
+
+完成点：用户看过这份汇报，并明确说继续。
+
+## Step 5：安装
 
 按确认出的安装类型打开 [references/install-methods.md](references/install-methods.md)
 并照对应小节操作。多个方式并存时按该文件开头的优先级选一种。
 
-动手前阅读仓库 README 的安装段落和 `package.json` lifecycle scripts。Git / npm
-依赖可执行 `preinstall`、`install`、`postinstall` 或 `prepare`。发现与插件功能无关
-的额外下载、写 `$DSH_HOME` 外路径或修改 shell 配置时，先把原文交给用户确认。
+安装过程中冒出 Step 4 没看到的动作（新的下载源、额外的写入路径、要求提权），
+停下来把原文交给用户，不要边装边判断。
 
 完成点：配置写入、依赖装完、命令零报错。
 
-## Step 5：验证挂载
+## Step 6：验证挂载
 
 web 等长驻 surface 监听 patch 文件改动后热载；一次性运行下次启动才生效。请用户
 确认相应 UI、工具或技能条目出现。
