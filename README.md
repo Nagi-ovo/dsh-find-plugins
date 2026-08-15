@@ -6,6 +6,10 @@
   <strong>简体中文</strong> | <a href="README.en.md">English</a>
 </p>
 
+<p align="center">
+  <a href="https://dshfind.com/zh/plugins/Nagi-ovo/dsh-find-plugins?ref=badge"><img src="https://dshfind.com/api/card/Nagi-ovo/dsh-find-plugins?lang=zh" alt="dsh-find-plugins 在 dshfind 插件目录上的展示卡" width="440"></a>
+</p>
+
 对 DSH 说一句「有没有插件能……」，它就会从全 GitHub 的 [`dsh-plugin` topic](https://github.com/topics/dsh-plugin) 里找出候选，解释差别，等你选好以后再安装和验证。
 
 仓库属于个人还是组织并不重要。只要是公开仓库并带有 `dsh-plugin` topic，转移仓库后仍然能被发现。

@@ -6,6 +6,10 @@
   <a href="README.md">简体中文</a> | <strong>English</strong>
 </p>
 
+<p align="center">
+  <a href="https://dshfind.com/en/plugins/Nagi-ovo/dsh-find-plugins?ref=badge"><img src="https://dshfind.com/api/card/Nagi-ovo/dsh-find-plugins?lang=en" alt="dsh-find-plugins on the dshfind plugin directory" width="440"></a>
+</p>
+
 Ask DSH, “is there a plugin for this?” It searches the GitHub [`dsh-plugin` topic](https://github.com/topics/dsh-plugin), explains the best matches, waits for your choice, then installs and verifies the selected plugin.
 
 Repository ownership does not matter. Any public repository tagged `dsh-plugin` remains discoverable after a transfer between a personal account and an organization.
